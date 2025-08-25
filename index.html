@@ -1,0 +1,494 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burgos Mobile Wash - Premier Automotive Detailing</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Three.js for 3D Background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111111; /* Near Black */
+            color: #F8F8F8; /* Off-White */
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .btn-gold {
+            background-color: #D4AF37; /* Polished Gold */
+            color: #111111;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        .btn-gold:hover {
+            background-color: #c09b2d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+        .btn-outline-gold {
+            border: 2px solid #D4AF37;
+            color: #D4AF37;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        .btn-outline-gold:hover {
+            background-color: #D4AF37;
+            color: #111111;
+        }
+        .gold-text {
+            color: #D4AF37;
+        }
+        .package-card {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .package-card:hover {
+            transform: translateY(-5px);
+            border-color: #D4AF37;
+        }
+        .package-card.featured {
+            border-width: 2px;
+            border-color: #D4AF37;
+            transform: scale(1.05);
+        }
+        .package-features {
+            flex-grow: 1;
+        }
+        .package-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .package-features svg {
+            color: #D4AF37;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid #D4AF37;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        .gallery-img, .process-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .service-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1554744512-d6c603f27c54?q=80&w=2670&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="absolute top-0 left-0 right-0 z-50 py-4 px-6 md:px-12">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white tracking-wider" style="font-family: 'Playfair Display', serif;">Burgos Mobile Wash</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#services" class="text-white hover:text-gray-300 transition">Packages</a>
+                <a href="#process" class="text-white hover:text-gray-300 transition">Our Process</a>
+                <a href="#gallery" class="text-white hover:text-gray-300 transition">Gallery</a>
+                <a href="#testimonials" class="text-white hover:text-gray-300 transition">Testimonials</a>
+            </nav>
+            <a href="#booking" class="btn-gold hidden md:inline-block py-3 px-6 rounded-lg shadow-lg">Book Now</a>
+             <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0-0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90 mt-2 rounded-lg">
+             <a href="#services" class="block text-white text-center py-3 px-4 hover:bg-gray-800">Packages</a>
+             <a href="#process" class="block text-white text-center py-3 px-4 hover:bg-gray-800">Our Process</a>
+             <a href="#gallery" class="block text-white text-center py-3 px-4 hover:bg-gray-800">Gallery</a>
+             <a href="#testimonials" class="block text-white text-center py-3 px-4 hover:bg-gray-800">Testimonials</a>
+             <a href="#booking" class="block btn-gold text-center py-3 px-4 mt-2 mb-3 mx-4 rounded-lg">Book Now</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="h-screen flex items-center justify-center text-white text-center relative overflow-hidden">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content bg-black bg-opacity-50 p-8 md:p-16 rounded-lg max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4">Unparalleled Automotive Brilliance.</h1>
+            <p class="text-2xl md:text-3xl font-light mb-2">Delivered.</p>
+            <p class="text-xl md:text-2xl font-light mb-8 gold-text italic">Your time, our Shine</p>
+            <a href="#services" class="btn-gold text-lg py-4 px-10 rounded-lg shadow-xl">Explore Our Packages</a>
+        </div>
+    </section>
+    
+    <!-- We Come To You Section -->
+    <section id="difference" class="py-20 md:py-24 service-bg">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">White Glove Service, Delivered.</h2>
+            <p class="text-lg text-gray-200 max-w-3xl mx-auto">We are not a destination; we are a service. Burgos Mobile Wash brings the pinnacle of automotive detailing directly to your home or office. We operate on your schedule, providing meticulous care without disrupting your day. This is luxury, redefined for your convenience.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Signature Packages</h2>
+            <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-16">Select the level of meticulous care your vehicle deserves.</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+                <!-- Bronze Package -->
+                <div class="package-card p-8 rounded-xl">
+                    <h3 class="text-3xl font-bold mb-2 gold-text">Bronze</h3>
+                    <p class="text-gray-400 mb-6">Essential maintenance.</p>
+                    <ul class="package-features text-gray-300">
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Premium Hand Wash</li>
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Wheel & Tire Clean</li>
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Interior Vacuum</li>
+                    </ul>
+                    <button data-package="bronze" class="btn-outline-gold w-full text-center mt-8 block py-3 px-6 rounded-lg">View Details</button>
+                </div>
+                <!-- Silver Package -->
+                <div class="package-card p-8 rounded-xl">
+                    <h3 class="text-3xl font-bold mb-2 gold-text">Silver</h3>
+                    <p class="text-gray-400 mb-6">A complete refresh.</p>
+                    <ul class="package-features text-gray-300">
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><strong>Bronze Features +</strong></li>
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Spray Wax</li>
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Tire Dressing</li>
+                    </ul>
+                    <button data-package="silver" class="btn-outline-gold w-full text-center mt-8 block py-3 px-6 rounded-lg">View Details</button>
+                </div>
+                <!-- Gold Package -->
+                <div class="package-card p-8 rounded-xl featured">
+                    <h3 class="text-3xl font-bold mb-2 gold-text">Gold</h3>
+                    <p class="text-gray-400 mb-6">Restorative experience.</p>
+                    <ul class="package-features text-gray-300">
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><strong>Silver Features +</strong></li>
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Deep Surface Cleansing</li>
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Paint Sealant (6-Month)</li>
+                    </ul>
+                    <button data-package="gold" class="btn-gold w-full text-center mt-8 block py-3 px-6 rounded-lg">View Details</button>
+                </div>
+                <!-- Diamond Package -->
+                <div class="package-card p-8 rounded-xl">
+                    <h3 class="text-3xl font-bold mb-2 gold-text">Diamond</h3>
+                    <p class="text-gray-400 mb-6">The pinnacle of perfection.</p>
+                    <ul class="package-features text-gray-300">
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><strong>Gold Features +</strong></li>
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Full Interior Deep Clean</li>
+                        <li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Engine Bay Detailing</li>
+                    </ul>
+                    <button data-package="diamond" class="btn-outline-gold w-full text-center mt-8 block py-3 px-6 rounded-lg">View Details</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 md:py-32 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 text-white text-center">Our Meticulous Process</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <!-- Step 1 -->
+                <div>
+                    <img src="https://images.unsplash.com/photo-1622542796353-8375ba5511b3?q=80&w=2574&auto=format&fit=crop" class="rounded-lg shadow-2xl mb-6 h-64 process-img" alt="Detailer inspecting a luxury car">
+                    <h3 class="text-2xl font-bold gold-text mb-2">1. Arrival & Assessment</h3>
+                    <p class="text-gray-400">We arrive fully equipped. Your vehicle is meticulously inspected to tailor our approach to its specific needs.</p>
+                </div>
+                <!-- Step 2 -->
+                <div>
+                    <img src="https://images.unsplash.com/photo-1545027202-735873d750a7?q=80&w=2574&auto=format&fit=crop" class="rounded-lg shadow-2xl mb-6 h-64 process-img" alt="Close up of car detailing process">
+                    <h3 class="text-2xl font-bold gold-text mb-2">2. The Detail</h3>
+                    <p class="text-gray-400">Using only premium products and proven techniques, our certified detailers execute your chosen package with surgical precision.</p>
+                </div>
+                <!-- Step 3 -->
+                <div>
+                    <img src="https://images.unsplash.com/photo-1610466024868-9103664a53b6?q=80&w=2574&auto=format&fit=crop" class="rounded-lg shadow-2xl mb-6 h-64 process-img" alt="Pristine, detailed car ready for handover">
+                    <h3 class="text-2xl font-bold gold-text mb-2">3. Final Inspection & Handover</h3>
+                    <p class="text-gray-400">A final, rigorous quality check under specialized lighting ensures perfection. We present your vehicle, restored to its showroom glory.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="bg-gray-900 py-20 md:py-32">
+        <div class="container mx-auto px-6">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 md:pr-12 mb-10 md:mb-0">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">The Art of Transformation</h2>
+                    <p class="text-lg text-gray-400 mb-8">Our meticulous process reveals the true potential of your vehicle's finish. We don't just clean cars; we restore their brilliance.</p>
+                    <a href="#" class="btn-gold py-3 px-8 rounded-lg">View Our Gallery</a>
+                </div>
+                <div class="md:w-1/2 grid grid-cols-2 gap-4 h-96">
+                    <div class="relative"><img src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=2574&auto=format&fit=crop" alt="Car before detailing" class="rounded-lg shadow-lg gallery-img"></div>
+                    <div class="relative"><img src="https://images.unsplash.com/photo-1605516296333-f88c8c42a454?q=80&w=2574&auto=format&fit=crop" alt="Car after detailing" class="rounded-lg shadow-lg gallery-img"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonial Section -->
+    <section id="testimonials" class="py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+            <p class="text-2xl md:text-3xl italic text-gray-300 leading-relaxed">"Having a family car and cleanliness normally don't go together but when you go to Burgos Mobile wash you feel like you just brought a new car off the lot... every inch on my car left spotless definitely has long time customer with me."</p>
+            <p class="mt-8 font-bold text-xl gold-text">- Fidel Lopez</p>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20 md:py-32 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-white text-center">Book Your Appointment</h2>
+            <form id="booking-form" class="max-w-2xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <input type="text" id="name" name="name" placeholder="Full Name" required class="w-full bg-gray-800 text-white p-4 rounded-lg border border-gray-700 focus:border-yellow-500 focus:outline-none">
+                    <input type="email" id="email" name="email" placeholder="Email Address" required class="w-full bg-gray-800 text-white p-4 rounded-lg border border-gray-700 focus:border-yellow-500 focus:outline-none">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required class="w-full bg-gray-800 text-white p-4 rounded-lg border border-gray-700 focus:border-yellow-500 focus:outline-none">
+                    <input type="text" id="vehicle" name="vehicle" placeholder="Vehicle Make & Model" required class="w-full bg-gray-800 text-white p-4 rounded-lg border border-gray-700 focus:border-yellow-500 focus:outline-none">
+                </div>
+                <div class="mb-6">
+                    <input type="date" id="date" name="date" required class="w-full bg-gray-800 text-white p-4 rounded-lg border border-gray-700 focus:border-yellow-500 focus:outline-none">
+                </div>
+                <div class="mb-6">
+                    <select id="package-select" name="package" required class="w-full bg-gray-800 text-white p-4 rounded-lg border border-gray-700 focus:border-yellow-500 focus:outline-none">
+                        <option value="">Select a Package</option>
+                        <option value="Bronze">Bronze Package</option>
+                        <option value="Silver">Silver Package</option>
+                        <option value="Gold">Gold Package</option>
+                        <option value="Diamond">Diamond Package</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn-gold text-lg py-4 px-12 rounded-lg shadow-xl">Submit Request</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-gray-400 py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold text-white mb-4">Contact Us</h3>
+            <p class="mb-8">Arrange a bespoke detailing experience at your convenience.</p>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mb-10 text-lg">
+                <a href="tel:347-490-8345" class="hover:text-white">(347) 490-8345</a>
+                <a href="mailto:burgosmobilewash@gmail.com" class="hover:text-white">burgosmobilewash@gmail.com</a>
+            </div>
+            <div class="mb-10"><a href="https://www.instagram.com/Burgosmobilewash" target="_blank" class="inline-block text-gray-400 hover:text-white transition"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.74 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98C23.986 15.667 24 15.26 24 12s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a></div>
+            <div class="border-t border-gray-700 pt-8 text-sm"><p>&copy; 2025 Burgos Mobile Wash. All Rights Reserved.</p><div class="mt-4 space-x-6"><a href="#" class="hover:text-white">Privacy Policy</a><a href="#" class="hover:text-white">Terms of Service</a></div></div>
+        </div>
+    </footer>
+
+    <!-- Package Details Modal -->
+    <div id="package-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="close-modal" class="absolute top-4 right-4 text-white hover:text-gray-400 text-3xl font-bold">&times;</button>
+            <h3 id="modal-title" class="text-3xl font-bold mb-4 gold-text"></h3>
+            <p id="modal-description" class="text-gray-400 mb-6"></p>
+            <ul id="modal-features" class="package-features text-gray-300 mb-8"></ul>
+            <button id="modal-book-btn" class="btn-gold w-full text-center py-3 px-6 rounded-lg">Book This Package</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Package Data ---
+        const packageData = {
+            bronze: {
+                title: "Bronze Package",
+                description: "Our essential maintenance package is perfect for keeping your vehicle in consistently clean condition. It covers all the fundamentals with professional care and high-quality products.",
+                features: ["Premium Hand Wash & Dry", "Wheel & Tire Cleaning", "Interior Vacuum", "Wipe Down of Surfaces", "Window Cleaning"]
+            },
+            silver: {
+                title: "Silver Package",
+                description: "Our most popular choice, the Silver Package, offers a comprehensive interior and exterior refresh. It includes a protective wax layer that enhances shine and shields your paintwork.",
+                features: ["<strong>All Bronze Features +</strong>", "Spray Wax Application", "Tire Dressing", "Deep Interior Wipe Down", "Door Jamb Cleaning"]
+            },
+            gold: {
+                title: "Gold Package",
+                description: "The ultimate restorative experience for your vehicle. The Gold Package includes a deep paint cleansing process and a durable sealant, leaving a flawless, protected, and incredibly glossy finish.",
+                features: ["<strong>All Silver Features +</strong>", "Deep Surface Cleansing", "High-Quality Paint Sealant (6-Month Durability)", "Leather Cleaning & Conditioning", "Carpet & Upholstery Shampoo"]
+            },
+            diamond: {
+                title: "Diamond Package",
+                description: "The pinnacle of automotive perfection. This package is for the owner who wants their vehicle in better-than-new condition, inside and out.",
+                features: ["<strong>All Gold Features +</strong>", "Full Interior Deep Clean & Steam", "Engine Bay Detailing", "Glass Sealant Application", "Trim Restoration & Protection"]
+            }
+        };
+
+        // --- Modal Logic ---
+        const modal = document.getElementById('package-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const detailButtons = document.querySelectorAll('[data-package]');
+        
+        detailButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const packageName = button.dataset.package;
+                const data = packageData[packageName];
+                
+                document.getElementById('modal-title').textContent = data.title;
+                document.getElementById('modal-description').textContent = data.description;
+                const featuresList = document.getElementById('modal-features');
+                featuresList.innerHTML = data.features.map(f => `<li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${f}</li>`).join('');
+                document.getElementById('modal-book-btn').dataset.package = packageName;
+
+                modal.classList.remove('hidden');
+            });
+        });
+
+        const closeModal = () => modal.classList.add('hidden');
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        
+        document.getElementById('modal-book-btn').addEventListener('click', function() {
+            const packageName = this.dataset.package;
+            document.getElementById('package-select').value = packageName.charAt(0).toUpperCase() + packageName.slice(1);
+            closeModal();
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // --- Booking Form Logic ---
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const vehicle = document.getElementById('vehicle').value;
+            const date = document.getElementById('date').value;
+            const selectedPackage = document.getElementById('package-select').value;
+
+            const subject = `New Booking Request from ${name}`;
+            const body = `New detailing request from the website:\n------------------------------------------\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nVehicle: ${vehicle}\nRequested Date: ${date}\nSelected Package: ${selectedPackage}\n------------------------------------------`;
+            window.location.href = `mailto:burgosmobilewash@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // --- Smooth Scrolling for Anchor Links ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // --- Three.js Animations ---
+        let heroScene, heroCamera, heroRenderer, heroRain, heroRainGeo, rainCount = 15000;
+        let mouseX = 0, mouseY = 0;
+        let windowHalfX = window.innerWidth / 2;
+        let windowHalfY = window.innerHeight / 2;
+
+        function initHeroAnimation() {
+            heroScene = new THREE.Scene();
+            heroCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+            heroCamera.position.z = 1;
+            
+            const canvas = document.getElementById('hero-canvas');
+            heroRenderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            heroRenderer.setSize(window.innerWidth, window.innerHeight);
+            heroRenderer.setPixelRatio(window.devicePixelRatio);
+
+            heroRainGeo = new THREE.BufferGeometry();
+            const positions = new Float32Array(rainCount * 3);
+            for(let i = 0; i < rainCount * 3; i+=3) {
+                positions[i] = Math.random() * 400 - 200;
+                positions[i+1] = Math.random() * 500 - 250;
+                positions[i+2] = Math.random() * 400 - 200;
+            }
+            heroRainGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+            let rainMaterial = new THREE.PointsMaterial({ color: 0xD4AF37, size: 0.1, transparent: true, opacity: 0.7 });
+            heroRain = new THREE.Points(heroRainGeo, rainMaterial);
+            heroScene.add(heroRain);
+            
+            document.addEventListener('mousemove', onDocumentMouseMove, false);
+        }
+
+        function onDocumentMouseMove(event) {
+            mouseX = (event.clientX - windowHalfX) / 100;
+            mouseY = (event.clientY - windowHalfY) / 100;
+        }
+
+        function animate() {
+            // Hero Animation
+            heroCamera.position.x += (mouseX - heroCamera.position.x) * 0.05;
+            heroCamera.position.y += (-mouseY - heroCamera.position.y) * 0.05;
+            heroCamera.lookAt(heroScene.position);
+            heroRain.rotation.y += 0.001;
+            heroRenderer.render(heroScene, heroCamera);
+            
+            requestAnimationFrame(animate);
+        }
+
+        function onWindowResize() {
+            windowHalfX = window.innerWidth / 2;
+            windowHalfY = window.innerHeight / 2;
+            
+            heroCamera.aspect = window.innerWidth / window.innerHeight;
+            heroCamera.updateProjectionMatrix();
+            heroRenderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        window.addEventListener('resize', onWindowResize, false);
+        window.onload = () => {
+            initHeroAnimation();
+            animate();
+        };
+    </script>
+
+</body>
+</html>
