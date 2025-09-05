@@ -1,0 +1,143 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #111111; /* Near Black */
+    color: #F8F8F8; /* Off-White */
+}
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+.btn-gold {
+    background-color: #D4AF37; /* Polished Gold */
+    color: #111111;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+.btn-gold:hover {
+    background-color: #c09b2d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+.btn-outline-gold {
+    border: 2px solid #D4AF37;
+    color: #D4AF37;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+.btn-outline-gold:hover {
+    background-color: #D4AF37;
+    color: #111111;
+}
+.gold-text {
+    color: #D4AF37;
+}
+.package-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.package-card:hover {
+    transform: translateY(-5px);
+    border-color: #D4AF37;
+}
+
+.package-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.package-icon-bronze {
+    fill: #CD7F32;
+}
+
+.package-icon-silver {
+    fill: #C0C0C0;
+}
+
+.package-icon-gold {
+    fill: #FFD700;
+}
+
+.package-icon-diamond {
+    fill: #b9f2ff;
+}
+.package-card.featured {
+    border-width: 2px;
+    border-color: #D4AF37;
+    transform: scale(1.05);
+}
+.package-features {
+    flex-grow: 1;
+}
+.package-features li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+.package-features svg {
+    color: #D4AF37;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid #D4AF37;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+.gallery-img, .process-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+.service-bg {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1554744512-d6c603f27c54?q=80&w=2670&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Scroll-reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-in-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

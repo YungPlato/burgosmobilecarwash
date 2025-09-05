@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,117 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- Custom Styles -->
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #111111; /* Near Black */
-            color: #F8F8F8; /* Off-White */
-        }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        .btn-gold {
-            background-color: #D4AF37; /* Polished Gold */
-            color: #111111;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-        .btn-gold:hover {
-            background-color: #c09b2d;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-        }
-        .btn-outline-gold {
-            border: 2px solid #D4AF37;
-            color: #D4AF37;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-        .btn-outline-gold:hover {
-            background-color: #D4AF37;
-            color: #111111;
-        }
-        .gold-text {
-            color: #D4AF37;
-        }
-        .package-card {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .package-card:hover {
-            transform: translateY(-5px);
-            border-color: #D4AF37;
-        }
-        .package-card.featured {
-            border-width: 2px;
-            border-color: #D4AF37;
-            transform: scale(1.05);
-        }
-        .package-features {
-            flex-grow: 1;
-        }
-        .package-features li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.75rem;
-        }
-        .package-features svg {
-            color: #D4AF37;
-            margin-right: 0.75rem;
-            flex-shrink: 0;
-        }
-        /* Modal Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.85);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            background: #1a1a1a;
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 1px solid #D4AF37;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
-        .gallery-img, .process-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .service-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1554744512-d6c603f27c54?q=80&w=2670&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="antialiased">
 
@@ -169,7 +58,7 @@
     </section>
     
     <!-- We Come To You Section -->
-    <section id="difference" class="py-20 md:py-24 service-bg">
+    <section id="difference" class="py-20 md:py-24 service-bg reveal">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">White Glove Service, Delivered.</h2>
             <p class="text-lg text-gray-200 max-w-3xl mx-auto">We are not a destination; we are a service. Burgos Mobile Wash brings the pinnacle of automotive detailing directly to your home or office. We operate on your schedule, providing meticulous care without disrupting your day. This is luxury, redefined for your convenience.</p>
@@ -177,7 +66,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 md:py-32">
+    <section id="services" class="py-20 md:py-32 reveal">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">Signature Packages</h2>
             <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-16">Select the level of meticulous care your vehicle deserves.</p>
@@ -185,6 +74,9 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
                 <!-- Bronze Package -->
                 <div class="package-card p-8 rounded-xl">
+                    <div class="w-16 h-16 mx-auto mb-4">
+                        <svg viewBox="0 0 1024 1024" class="icon package-icon" version="1.1" xmlns="http://www.w3.org/2000/svg"><path class="package-icon-bronze" d="M841.7 915.2L518.5 797.3 183.1 915.2V107.1h658.6z" /><path d="M849.7 926.7L518.4 805.8 175.1 926.5V99.1h674.5v827.6zM191.1 115.1v788.8l327.4-115.1 315.1 115V115.1H191.1z" fill="#0A0408" /><path d="M801.6 868.3l-18.2-6.6 2.2-6.2v-6.6h2.5l0.8-2.3 6.2 2.3h6.5zM256.2 856.6l-5.3-15.1 14.8-5.2 5.3 15.1-14.8 5.2z m512.4-0.3l-14.8-5.4 5.5-15 14.8 5.4-5.5 15z m-482.8-10.2l-5.3-15.1 14.8-5.2 5.3 15.1-14.8 5.2z m453.3-0.6l-14.8-5.4 5.5-15 14.8 5.4-5.5 15z m-423.6-9.8l-5.3-15.1 14.8-5.2 5.3 15.1-14.8 5.2z m394.1-1l-14.8-5.4 5.5-15 14.8 5.4-5.5 15z m-364.5-9.4l-5.3-15.1 14.8-5.2 5.3 15.1-14.8 5.2z m334.9-1.4l-14.8-5.4 5.5-15 14.8 5.4-5.5 15z m-305.2-9.1l-5.3-15.1 14.8-5.2 5.3 15.1-14.8 5.2z m275.7-1.6l-14.8-5.4 5.5-15 14.8 5.4-5.5 15z m-246.1-8.8l-5.3-15.1 14.8-5.2 5.3 15.1-14.8 5.2z m216.6-2l-14.8-5.4 5.5-15 14.8 5.4-5.5 15zM434.1 794l-5.3-15.1 14.8-5.2 5.3 15.1-14.8 5.2z m157.4-2.4l-14.8-5.4 5.5-15 14.8 5.4-5.5 15z m-127.8-8l-5.3-15.1 14.8-5.2 5.3 15.1-14.8 5.2z m98.2-2.8l-14.8-5.4 5.5-15 14.8 5.4-5.5 15z m-68.5-7.7l-5.3-15.1 14.8-5.2 5.3 15.1-14.8 5.2z m39-3l-14.8-5.4 5.5-15 14.8 5.4-5.5 15zM223.2 868.2v-19.3h6.6l6.2-2.2 0.8 2.2h2.4v6.6l2.2 6.3zM239.2 833.2h-16v-15.7h16v15.7z m0-31.4h-16V786h16v15.8z m0-31.5h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16V629h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.5h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16V519z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16V362z m0-31.5h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16V252h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7zM223.2 157.5h16v16h-16zM770 173.5h-15.6v-16H770v16z m-31.2 0h-15.6v-16h15.6v16z m-31.2 0H692v-16h15.6v16z m-31.3 0h-15.6v-16h15.6v16z m-31.2 0h-15.6v-16h15.6v16z m-31.2 0h-15.6v-16h15.6v16z m-31.2 0H567v-16h15.6v16z m-31.3 0h-15.6v-16h15.6v16z m-31.2 0h-15.6v-16h15.6v16z m-31.2 0h-15.6v-16H489v16z m-31.3 0h-15.6v-16h15.6v16z m-31.2 0h-15.6v-16h15.6v16z m-31.2 0h-15.6v-16h15.6v16z m-31.2 0h-15.6v-16h15.6v16z m-31.3 0h-15.6v-16h15.6v16z m-31.2 0H286v-16h15.6v16z m-31.2 0h-15.6v-16h15.6v16zM785.6 157.5h16v16h-16zM801.6 833.2h-16v-15.7h16v15.7z m0-31.4h-16V786h16v15.8z m0-31.5h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16V629h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.5h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16V519z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16V362z m0-31.5h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16V252h16v15.7z m0-31.4h-16v-15.7h16v15.7z m0-31.4h-16v-15.7h16v15.7z" fill="#0A0408" /><path class="package-icon-bronze" d="M752.2 791.2l-235.4-85.9-244.2 85.9V196.6h479.6z" /><path d="M512.4 305.7l42.9 86.8 95.8 13.9-69.4 67.6 16.4 95.5-85.7-45.1-85.7 45.1 16.4-95.5-69.4-67.6 95.8-13.9z" fill="#EBB866" /><path d="M608.7 584.1l-96.3-50.6-96.3 50.6 18.4-107.3-77.9-76 107.7-15.7 48.2-97.6 48.2 97.6 107.7 15.7-77.9 76 18.2 107.3z m-96.3-68.7l75.1 39.5-14.3-83.6 60.7-59.2-83.9-12.2-37.5-76.1-37.5 76.1-84.1 12.1 60.7 59.2-14.3 83.6 75.1-39.4z" fill="#0A0408" /><path d="M205.7 140h50.9v50.9h-50.9z" fill="#DC444A" /><path d="M264.6 198.9h-66.9V132h66.9v66.9z m-50.9-16h34.9V148h-34.9v34.9z" fill="#0A0408" /><path d="M768.2 140h50.9v50.9h-50.9z" fill="#DC444A" /><path d="M827.1 198.9h-66.9V132h66.9v66.9z m-50.9-16h34.9V148h-34.9v34.9z" fill="#0A0408" /></svg>
+                    </div>
                     <h3 class="text-3xl font-bold mb-2 gold-text">Bronze</h3>
                     <p class="text-gray-400 mb-6">Essential maintenance.</p>
                     <ul class="package-features text-gray-300">
@@ -196,6 +88,13 @@
                 </div>
                 <!-- Silver Package -->
                 <div class="package-card p-8 rounded-xl">
+                    <div class="w-16 h-16 mx-auto mb-4">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="package-icon">
+                            <path class="package-icon-silver" d="M17 8V6C17 4.11438 17 3.17157 16.4142 2.58579C15.8284 2 14.8856 2 13 2H11C9.11438 2 8.17157 2 7.58579 2.58579C7 3.17157 7 4.11438 7 6V8"/>
+                            <path class="package-icon-silver" d="M19.7943 11.0312C19.7943 9.93319 19.1944 8.92292 18.2305 8.39728L13.4362 5.78311C12.541 5.29495 11.4591 5.29495 10.5638 5.78311L5.76962 8.39728C4.80563 8.92292 4.20581 9.93318 4.20581 11.0312V15.9688C4.20581 17.0668 4.80563 18.0771 5.76962 18.6027L10.5638 21.2169C11.4591 21.705 12.541 21.705 13.4362 21.2169L18.2305 18.6027C19.1944 18.0771 19.7943 17.0668 19.7943 15.9688V15"/>
+                            <path class="package-icon-silver" d="M11.1459 11.5228C11.5259 10.8411 11.7159 10.5002 12 10.5002C12.2841 10.5002 12.4741 10.8411 12.8541 11.5228L12.9524 11.6991C13.0603 11.8928 13.1143 11.9897 13.1985 12.0536C13.2827 12.1175 13.3875 12.1412 13.5972 12.1887L13.7881 12.2319C14.526 12.3988 14.895 12.4823 14.9828 12.7646C15.0706 13.0468 14.819 13.341 14.316 13.9292L14.1858 14.0814C14.0429 14.2486 13.9714 14.3322 13.9392 14.4356C13.9071 14.539 13.9179 14.6505 13.9395 14.8735L13.9592 15.0766C14.0352 15.8614 14.0733 16.2539 13.8435 16.4283C13.6136 16.6028 13.2682 16.4437 12.5773 16.1256L12.3986 16.0433C12.2022 15.9529 12.1041 15.9077 12 15.9077C11.8959 15.9077 11.7978 15.9529 11.6014 16.0433L11.4227 16.1256C10.7318 16.4437 10.3864 16.6028 10.1565 16.4283C9.92674 16.2539 9.96476 15.8614 10.0408 15.0766L10.0605 14.8735C10.0821 14.6505 10.0929 14.539 10.0608 14.4356C10.0286 14.3322 9.95713 14.2486 9.81418 14.0814L9.68403 13.9292C9.18097 13.341 8.92945 13.0468 9.01723 12.7646C9.10501 12.4823 9.47396 12.3988 10.2119 12.2319L10.4028 12.1887C10.6125 12.1412 10.7173 12.1175 10.8015 12.0536C10.8857 11.9897 10.9397 11.8928 11.0476 11.6991L11.1459 11.5228Z"/>
+                        </svg>
+                    </div>
                     <h3 class="text-3xl font-bold mb-2 gold-text">Silver</h3>
                     <p class="text-gray-400 mb-6">A complete refresh.</p>
                     <ul class="package-features text-gray-300">
@@ -207,6 +106,12 @@
                 </div>
                 <!-- Gold Package -->
                 <div class="package-card p-8 rounded-xl featured">
+                    <div class="w-16 h-16 mx-auto mb-4">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="package-icon">
+                            <path class="package-icon-gold" d="M7.35111 15L6.71424 17.323C6.0859 19.6148 5.77173 20.7607 6.19097 21.3881C6.3379 21.6079 6.535 21.7844 6.76372 21.9008C7.41635 22.2331 8.42401 21.7081 10.4393 20.658C11.1099 20.3086 11.4452 20.1339 11.8014 20.0959C11.9335 20.0818 12.0665 20.0818 12.1986 20.0959C12.5548 20.1339 12.8901 20.3086 13.5607 20.658C15.576 21.7081 16.5837 22.2331 17.2363 21.9008C17.465 21.7844 17.6621 21.6079 17.809 21.3881C18.2283 20.7607 17.9141 19.6148 17.2858 17.323L16.6489 15"/>
+                            <path class="package-icon-gold" d="M5.5 6.39691C5.17745 7.20159 5 8.08007 5 9C5 12.866 8.13401 16 12 16C15.866 16 19 12.866 19 9C19 5.13401 15.866 2 12 2C11.0801 2 10.2016 2.17745 9.39691 2.5"/>
+                        </svg>
+                    </div>
                     <h3 class="text-3xl font-bold mb-2 gold-text">Gold</h3>
                     <p class="text-gray-400 mb-6">Restorative experience.</p>
                     <ul class="package-features text-gray-300">
@@ -218,6 +123,13 @@
                 </div>
                 <!-- Diamond Package -->
                 <div class="package-card p-8 rounded-xl">
+                    <div class="w-16 h-16 mx-auto mb-4">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="package-icon">
+                            <path class="package-icon-diamond" d="M11.1459 7.02251C11.5259 6.34084 11.7159 6 12 6C12.2841 6 12.4741 6.34084 12.8541 7.02251L12.9524 7.19887C13.0603 7.39258 13.1143 7.48944 13.1985 7.55334C13.2827 7.61725 13.3875 7.64097 13.5972 7.68841L13.7881 7.73161C14.526 7.89857 14.895 7.98205 14.9828 8.26432C15.0706 8.54659 14.819 8.84072 14.316 9.42898L14.1858 9.58117C14.0429 9.74833 13.9714 9.83191 13.9392 9.93531C13.9071 10.0387 13.9179 10.1502 13.9395 10.3733L13.9592 10.5763C14.0352 11.3612 14.0733 11.7536 13.8435 11.9281C13.6136 12.1025 13.2682 11.9435 12.5773 11.6254L12.3986 11.5431C12.2022 11.4527 12.1041 11.4075 12 11.4075C11.8959 11.4075 11.7978 11.4527 11.6014 11.5431L11.4227 11.6254C10.7318 11.9435 10.3864 12.1025 10.1565 11.9281C9.92674 11.7536 9.96476 11.3612 10.0408 10.5763L10.0605 10.3733C10.0821 10.1502 10.0929 10.0387 10.0608 9.93531C10.0286 9.83191 9.95713 9.74833 9.81418 9.58117L9.68403 9.42898C9.18097 8.84072 8.92945 8.54659 9.01723 8.26432C9.10501 7.98205 9.47396 7.89857 10.2119 7.73161L10.4028 7.68841C10.6125 7.64097 10.7173 7.61725 10.8015 7.55334C10.8857 7.48944 10.9397 7.39258 11.0476 7.19887L11.1459 7.02251Z"/>
+                            <path class="package-icon-diamond" d="M7.35111 15L6.71424 17.323C6.0859 19.6148 5.77173 20.7607 6.19097 21.3881C6.3379 21.6079 6.535 21.7844 6.76372 21.9008C7.41635 22.2331 8.42401 21.7081 10.4393 20.658C11.1099 20.3086 11.4452 20.1339 11.8014 20.0959C11.9335 20.0818 12.0665 20.0818 12.1986 20.0959C12.5548 20.1339 12.8901 20.3086 13.5607 20.658C15.576 21.7081 16.5837 22.2331 17.2363 21.9008C17.465 21.7844 17.6621 21.6079 17.809 21.3881C18.2283 20.7607 17.9141 19.6148 17.2858 17.323L16.6489 15"/>
+                            <path class="package-icon-diamond" d="M5.5 6.39691C5.17745 7.20159 5 8.08007 5 9C5 12.866 8.13401 16 12 16C15.866 16 19 12.866 19 9C19 5.13401 15.866 2 12 2C11.0801 2 10.2016 2.17745 9.39691 2.5"/>
+                        </svg>
+                    </div>
                     <h3 class="text-3xl font-bold mb-2 gold-text">Diamond</h3>
                     <p class="text-gray-400 mb-6">The pinnacle of perfection.</p>
                     <ul class="package-features text-gray-300">
@@ -231,8 +143,86 @@
         </div>
     </section>
 
+    <!-- Comparison Table Section -->
+    <section id="comparison" class="py-20 md:py-32 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-white text-center">Compare Our Packages</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-900">
+                            <th class="p-4 text-xl font-bold text-white">Feature</th>
+                            <th class="p-4 text-xl font-bold gold-text text-center">Bronze</th>
+                            <th class="p-4 text-xl font-bold gold-text text-center">Silver</th>
+                            <th class="p-4 text-xl font-bold gold-text text-center">Gold</th>
+                            <th class="p-4 text-xl font-bold gold-text text-center">Diamond</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-300">
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4">Premium Hand Wash & Dry</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 bg-gray-900">
+                            <td class="p-4">Wheel & Tire Cleaning</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4">Interior Vacuum</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 bg-gray-900">
+                            <td class="p-4">Spray Wax Application</td>
+                            <td class="p-4 text-center text-2xl text-gray-600">&ndash;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                        </tr>
+                         <tr class="border-b border-gray-800">
+                            <td class="p-4">Tire Dressing</td>
+                            <td class="p-4 text-center text-2xl text-gray-600">&ndash;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 bg-gray-900">
+                            <td class="p-4">Paint Sealant (6-Month)</td>
+                            <td class="p-4 text-center text-2xl text-gray-600">&ndash;</td>
+                            <td class="p-4 text-center text-2xl text-gray-600">&ndash;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="p-4">Full Interior Deep Clean</td>
+                            <td class="p-4 text-center text-2xl text-gray-600">&ndash;</td>
+                            <td class="p-4 text-center text-2xl text-gray-600">&ndash;</td>
+                             <td class="p-4 text-center text-2xl text-gray-600">&ndash;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                        </tr>
+                         <tr class="border-b border-gray-800 bg-gray-900">
+                            <td class="p-4">Engine Bay Detailing</td>
+                            <td class="p-4 text-center text-2xl text-gray-600">&ndash;</td>
+                            <td class="p-4 text-center text-2xl text-gray-600">&ndash;</td>
+                             <td class="p-4 text-center text-2xl text-gray-600">&ndash;</td>
+                            <td class="p-4 text-center text-2xl gold-text">&check;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <!-- Process Section -->
-    <section id="process" class="py-20 md:py-32 bg-black">
+    <section id="process" class="py-20 md:py-32 bg-black reveal">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl md:text-5xl font-bold mb-16 text-white text-center">Our Meticulous Process</h2>
             <div class="grid md:grid-cols-3 gap-8 text-center">
@@ -259,27 +249,77 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="bg-gray-900 py-20 md:py-32">
+    <section id="gallery" class="bg-gray-900 py-20 md:py-32 reveal">
         <div class="container mx-auto px-6">
-            <div class="md:flex items-center">
-                <div class="md:w-1/2 md:pr-12 mb-10 md:mb-0">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">The Art of Transformation</h2>
-                    <p class="text-lg text-gray-400 mb-8">Our meticulous process reveals the true potential of your vehicle's finish. We don't just clean cars; we restore their brilliance.</p>
-                    <a href="#" class="btn-gold py-3 px-8 rounded-lg">View Our Gallery</a>
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-white text-center">The Art of Transformation</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="gallery-item group">
+                    <img src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=2574&auto=format&fit=crop" alt="Pristine car interior" class="gallery-img rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300">
                 </div>
-                <div class="md:w-1/2 grid grid-cols-2 gap-4 h-96">
-                    <div class="relative"><img src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?q=80&w=2574&auto=format&fit=crop" alt="Car before detailing" class="rounded-lg shadow-lg gallery-img"></div>
-                    <div class="relative"><img src="https://images.unsplash.com/photo-1605516296333-f88c8c42a454?q=80&w=2574&auto=format&fit=crop" alt="Car after detailing" class="rounded-lg shadow-lg gallery-img"></div>
+                <div class="gallery-item group">
+                    <img src="https://images.unsplash.com/photo-1605516296333-f88c8c42a454?q=80&w=2574&auto=format&fit=crop" alt="Car exterior after detailing" class="gallery-img rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="gallery-item group">
+                    <img src="https://images.unsplash.com/photo-1599142944827-77636136bf41?q=80&w=2574&auto=format&fit=crop" alt="Detailed wheel and tire" class="gallery-img rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="gallery-item group">
+                    <img src="https://images.unsplash.com/photo-1626668893632-6f3a4466b22f?q=80&w=2574&auto=format&fit=crop" alt="Shiny car hood" class="gallery-img rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300">
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-[1001]">
+        <button id="close-gallery-modal" class="absolute top-6 right-8 text-white text-5xl font-bold">&times;</button>
+        <button id="prev-gallery-img" class="absolute left-8 text-white text-5xl font-bold">&#8249;</button>
+        <button id="next-gallery-img" class="absolute right-8 text-white text-5xl font-bold">&#8250;</button>
+        <div class="max-w-4xl max-h-4/5 w-full h-full p-4">
+            <img id="gallery-modal-img" src="" alt="Enlarged gallery image" class="w-full h-full object-contain">
+        </div>
+    </div>
     
     <!-- Testimonial Section -->
-    <section id="testimonials" class="py-20 md:py-32">
+    <section id="testimonials" class="py-20 md:py-32 reveal">
         <div class="container mx-auto px-6 text-center max-w-4xl">
             <p class="text-2xl md:text-3xl italic text-gray-300 leading-relaxed">"Having a family car and cleanliness normally don't go together but when you go to Burgos Mobile wash you feel like you just brought a new car off the lot... every inch on my car left spotless definitely has long time customer with me."</p>
             <p class="mt-8 font-bold text-xl gold-text">- Fidel Lopez</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 md:py-32">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-white text-center">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+                <div class="faq-item bg-gray-900 rounded-lg p-6">
+                    <button class="faq-question w-full text-left flex justify-between items-center">
+                        <h3 class="text-xl font-semibold text-white">Do I need to provide water or electricity?</h3>
+                        <span class="text-2xl gold-text transform transition-transform duration-300">&plus;</span>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-400" style="display: none;">
+                        <p>No, you don't! Our mobile detailing units are fully self-contained. We bring our own filtered water and electricity, ensuring we can provide our services anywhere, from your office parking lot to your driveway.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-gray-900 rounded-lg p-6">
+                    <button class="faq-question w-full text-left flex justify-between items-center">
+                        <h3 class="text-xl font-semibold text-white">How long does a detailing service take?</h3>
+                        <span class="text-2xl gold-text transform transition-transform duration-300">&plus;</span>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-400" style="display: none;">
+                        <p>The duration depends on the package selected and the initial condition of the vehicle. Typically, a service can range from 1.5 hours for our Bronze package to over 4 hours for our comprehensive Diamond package.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-gray-900 rounded-lg p-6">
+                    <button class="faq-question w-full text-left flex justify-between items-center">
+                        <h3 class="text-xl font-semibold text-white">What payment methods do you accept?</h3>
+                        <span class="text-2xl gold-text transform transition-transform duration-300">&plus;</span>
+                    </button>
+                    <div class="faq-answer mt-4 text-gray-400" style="display: none;">
+                        <p>We accept all major credit cards, debit cards, and cash. Payment is due upon completion of the service and your full satisfaction.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -340,155 +380,7 @@
         </div>
     </div>
 
-    <script>
-        // --- Package Data ---
-        const packageData = {
-            bronze: {
-                title: "Bronze Package",
-                description: "Our essential maintenance package is perfect for keeping your vehicle in consistently clean condition. It covers all the fundamentals with professional care and high-quality products.",
-                features: ["Premium Hand Wash & Dry", "Wheel & Tire Cleaning", "Interior Vacuum", "Wipe Down of Surfaces", "Window Cleaning"]
-            },
-            silver: {
-                title: "Silver Package",
-                description: "Our most popular choice, the Silver Package, offers a comprehensive interior and exterior refresh. It includes a protective wax layer that enhances shine and shields your paintwork.",
-                features: ["<strong>All Bronze Features +</strong>", "Spray Wax Application", "Tire Dressing", "Deep Interior Wipe Down", "Door Jamb Cleaning"]
-            },
-            gold: {
-                title: "Gold Package",
-                description: "The ultimate restorative experience for your vehicle. The Gold Package includes a deep paint cleansing process and a durable sealant, leaving a flawless, protected, and incredibly glossy finish.",
-                features: ["<strong>All Silver Features +</strong>", "Deep Surface Cleansing", "High-Quality Paint Sealant (6-Month Durability)", "Leather Cleaning & Conditioning", "Carpet & Upholstery Shampoo"]
-            },
-            diamond: {
-                title: "Diamond Package",
-                description: "The pinnacle of automotive perfection. This package is for the owner who wants their vehicle in better-than-new condition, inside and out.",
-                features: ["<strong>All Gold Features +</strong>", "Full Interior Deep Clean & Steam", "Engine Bay Detailing", "Glass Sealant Application", "Trim Restoration & Protection"]
-            }
-        };
-
-        // --- Modal Logic ---
-        const modal = document.getElementById('package-modal');
-        const closeModalBtn = document.getElementById('close-modal');
-        const detailButtons = document.querySelectorAll('[data-package]');
-        
-        detailButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const packageName = button.dataset.package;
-                const data = packageData[packageName];
-                
-                document.getElementById('modal-title').textContent = data.title;
-                document.getElementById('modal-description').textContent = data.description;
-                const featuresList = document.getElementById('modal-features');
-                featuresList.innerHTML = data.features.map(f => `<li><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>${f}</li>`).join('');
-                document.getElementById('modal-book-btn').dataset.package = packageName;
-
-                modal.classList.remove('hidden');
-            });
-        });
-
-        const closeModal = () => modal.classList.add('hidden');
-        closeModalBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-        
-        document.getElementById('modal-book-btn').addEventListener('click', function() {
-            const packageName = this.dataset.package;
-            document.getElementById('package-select').value = packageName.charAt(0).toUpperCase() + packageName.slice(1);
-            closeModal();
-            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // --- Booking Form Logic ---
-        document.getElementById('booking-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const vehicle = document.getElementById('vehicle').value;
-            const date = document.getElementById('date').value;
-            const selectedPackage = document.getElementById('package-select').value;
-
-            const subject = `New Booking Request from ${name}`;
-            const body = `New detailing request from the website:\n------------------------------------------\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nVehicle: ${vehicle}\nRequested Date: ${date}\nSelected Package: ${selectedPackage}\n------------------------------------------`;
-            window.location.href = `mailto:burgosmobilewash@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        });
-
-        // --- Mobile Menu Toggle ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-        // --- Smooth Scrolling for Anchor Links ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                if (this.getAttribute('href') !== '#') {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // --- Three.js Animations ---
-        let heroScene, heroCamera, heroRenderer, heroRain, heroRainGeo, rainCount = 15000;
-        let mouseX = 0, mouseY = 0;
-        let windowHalfX = window.innerWidth / 2;
-        let windowHalfY = window.innerHeight / 2;
-
-        function initHeroAnimation() {
-            heroScene = new THREE.Scene();
-            heroCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
-            heroCamera.position.z = 1;
-            
-            const canvas = document.getElementById('hero-canvas');
-            heroRenderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-            heroRenderer.setSize(window.innerWidth, window.innerHeight);
-            heroRenderer.setPixelRatio(window.devicePixelRatio);
-
-            heroRainGeo = new THREE.BufferGeometry();
-            const positions = new Float32Array(rainCount * 3);
-            for(let i = 0; i < rainCount * 3; i+=3) {
-                positions[i] = Math.random() * 400 - 200;
-                positions[i+1] = Math.random() * 500 - 250;
-                positions[i+2] = Math.random() * 400 - 200;
-            }
-            heroRainGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-            let rainMaterial = new THREE.PointsMaterial({ color: 0xD4AF37, size: 0.1, transparent: true, opacity: 0.7 });
-            heroRain = new THREE.Points(heroRainGeo, rainMaterial);
-            heroScene.add(heroRain);
-            
-            document.addEventListener('mousemove', onDocumentMouseMove, false);
-        }
-
-        function onDocumentMouseMove(event) {
-            mouseX = (event.clientX - windowHalfX) / 100;
-            mouseY = (event.clientY - windowHalfY) / 100;
-        }
-
-        function animate() {
-            // Hero Animation
-            heroCamera.position.x += (mouseX - heroCamera.position.x) * 0.05;
-            heroCamera.position.y += (-mouseY - heroCamera.position.y) * 0.05;
-            heroCamera.lookAt(heroScene.position);
-            heroRain.rotation.y += 0.001;
-            heroRenderer.render(heroScene, heroCamera);
-            
-            requestAnimationFrame(animate);
-        }
-
-        function onWindowResize() {
-            windowHalfX = window.innerWidth / 2;
-            windowHalfY = window.innerHeight / 2;
-            
-            heroCamera.aspect = window.innerWidth / window.innerHeight;
-            heroCamera.updateProjectionMatrix();
-            heroRenderer.setSize(window.innerWidth, window.innerHeight);
-        }
-
-        window.addEventListener('resize', onWindowResize, false);
-        window.onload = () => {
-            initHeroAnimation();
-            animate();
-        };
-    </script>
+    <script src="js/script.js"></script>
 
 </body>
 </html>
