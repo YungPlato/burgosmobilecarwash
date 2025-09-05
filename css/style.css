@@ -56,6 +56,27 @@ h1, h2, h3 {
     transform: translateY(-5px);
     border-color: #D4AF37;
 }
+
+.package-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.package-icon-bronze {
+    fill: #CD7F32;
+}
+
+.package-icon-silver {
+    fill: #C0C0C0;
+}
+
+.package-icon-gold {
+    fill: #FFD700;
+}
+
+.package-icon-diamond {
+    fill: #b9f2ff;
+}
 .package-card.featured {
     border-width: 2px;
     border-color: #D4AF37;
